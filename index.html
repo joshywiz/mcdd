@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍟 $300 McDonald's Voucher · win free meals</title>
+    <!-- Font Awesome 6 (free) - social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts Inter (modern, fast) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fef7e9;
+            color: #1e1e1e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+        h1 {
+            font-size: clamp(2.4rem,7vw,3.8rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        h2 {
+            font-size: clamp(2rem,5vw,2.8rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        /* buttons */
+        .btn-primary, .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #DA291C;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 16px 42px;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+            box-shadow: 0 12px 22px -8px #DA291C;
+            border: 2px solid transparent;
+        }
+        .btn-primary:hover, .btn-submit:hover {
+            background: #b61f14;
+            transform: scale(1.02);
+            box-shadow: 0 18px 28px -8px #b61f14;
+        }
+        .btn-submit {
+            background: #2e7d32;
+            font-size: 1.6rem;
+            padding: 18px 24px;
+            width: 100%;
+            box-shadow: 0 12px 20px -8px #1b5e20;
+        }
+        .btn-submit:hover {
+            background: #1e5622;
+        }
+        /* hero with logo */
+        .hero {
+            background: linear-gradient(140deg, #fff0cf, #ffde9e);
+            padding: 40px 0 30px;
+            border-bottom: 4px solid #FFC72C;
+        }
+        .hero-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+        .hero-text {
+            flex: 1 1 340px;
+        }
+        .mcd-logo-large {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: #DA291C;
+            padding: 12px 32px 12px 24px;
+            border-radius: 60px;
+            width: fit-content;
+            margin-bottom: 28px;
+            border: 2px solid #FFC72C;
+        }
+        .mcd-logo-large img {
+            height: 48px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        .mcd-logo-large span {
+            color: white;
+            font-weight: 800;
+            font-size: 2rem;
+            letter-spacing: -0.02em;
+        }
+        /* steps */
+        .steps-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        .step-card {
+            background: #fff;
+            border-radius: 40px;
+            padding: 32px 20px;
+            flex: 1 1 200px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+            border: 1px solid #fad791;
+            text-align: center;
+        }
+        .step-card:hover {
+            transform: translateY(-6px);
+            border-color: #FFC72C;
+            box-shadow: 0 30px 30px -12px rgba(218,41,28,0.08);
+        }
+        .step-icon { font-size: 3rem; margin-bottom: 12px; }
+        .step-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 10px; }
+        /* prize */
+        .prize-panel {
+            background: #fff;
+            border-radius: 60px;
+            padding: 40px;
+            border: 2px solid #FFC72C;
+            box-shadow: 0 30px 30px -10px rgba(0,0,0,0.03);
+            margin: 20px 0;
+        }
+        .prize-list {
+            list-style: none;
+        }
+        .prize-list li {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 14px;
+        }
+        .prize-list li:last-child { border-bottom: none; }
+        .prize-list i { font-size: 2rem; width: 44px; color: #DA291C; }
+        .total-value {
+            background: #DA291C;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 800;
+            padding: 16px 36px;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 24px;
+        }
+        /* form */
+        .form-card {
+            background: #fff;
+            border-radius: 60px;
+            padding: 48px;
+            box-shadow: 0 30px 40px -16px rgba(0,0,0,0.1);
+            border: 2px solid #FFC72C;
+            max-width: 720px;
+        }
+        .input-field { margin-bottom: 22px; }
+        .input-field label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .input-field input, .input-field select {
+            width: 100%;
+            padding: 16px 22px;
+            border: 2px solid #eee;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: #fafafa;
+            transition: 0.2s;
+        }
+        .input-field input:focus, .input-field select:focus {
+            border-color: #FFC72C;
+            outline: none;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(255,199,44,0.2);
+        }
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 30px 0;
+        }
+        .checkbox input { width: 22px; height: 22px; accent-color: #DA291C; }
+        /* urgency */
+        .countdown-block {
+            background: #1e1e1e;
+            border-radius: 80px;
+            padding: 40px 48px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            background: linear-gradient(145deg,#262422,#181818);
+            border: 2px solid #FFC72C;
+        }
+        .timer-digits {
+            display: flex;
+            gap: 20px;
+            font-size: 3rem;
+            font-weight: 800;
+            background: #2b2b2b;
+            padding: 16px 32px;
+            border-radius: 60px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .digit-block {
+            background: #0f0f0f;
+            padding: 10px 18px;
+            border-radius: 20px;
+            min-width: 70px;
+            text-align: center;
+        }
+        .timer-unit {
+            display: block;
+            font-size: 0.8rem;
+            color: #FFC72C;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+        /* trust */
+        .trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+            justify-content: center;
+            background: #e9e0d0;
+            padding: 20px 32px;
+            border-radius: 60px;
+            font-weight: 600;
+            margin: 30px 0;
+        }
+        /* FOOTER - with 5 popular social icons + McD logo + required disclaimer */
+        .footer {
+            background: #151515;
+            color: #ccc;
+            padding: 60px 0 30px;
+            border-radius: 50px 50px 0 0;
+            margin-top: 40px;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px 30px;
+        }
+        .footer-logo img {
+            height: 70px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+        }
+        .footer-links a {
+            color: #FFC72C;
+            text-decoration: none;
+            margin-right: 28px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        .footer-links a:hover { text-decoration: underline; }
+
+        /* exactly five most popular social icons */
+        .social-icons {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .social-icons a {
+            color: #f0f0f0;
+            font-size: 2.4rem;
+            transition: all 0.2s;
+            line-height: 1;
+        }
+        .social-icons a:hover {
+            color: #FFC72C;
+            transform: translateY(-5px);
+        }
+
+        /* disclaimer text - exact wording as requested */
+        .disclaimer {
+            text-align: center;
+            margin-top: 48px;
+            color: #aaa;
+            font-size: 0.95rem;
+            border-top: 1px solid #333;
+            padding-top: 28px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        @media (max-width:700px) {
+            .timer-digits { font-size: 2rem; gap: 8px; }
+            .digit-block { padding: 6px 10px; min-width: 50px; }
+            .footer-grid { justify-content: center; text-align: center; }
+            .social-icons { justify-content: center; }
+        }
+        :focus-visible { outline: 4px solid #DA291C; outline-offset: 4px; }
+    </style>
+</head>
+<body>
+
+<!-- HERO with large McDonald's logo (demo only) -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <!-- McDonald's logo block (arches + wordmark) -->
+                <div class="mcd-logo-large">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpath fill='%23FFC72C' d='M60 20L10 100h100L60 20z'/%3E%3C/svg%3E" alt="arches">
+                    <span>McDonald's</span>
+                </div>
+                <h1>🍟 Win a $300 McDonald’s Voucher Today!</h1>
+                <p style="font-size:1.4rem; margin:20px 0;">One lucky customer will receive a $300 voucher to enjoy their favorite meals.</p>
+                <p style="font-size:1.8rem; font-weight:700;">⚡ It’s fast. It’s free. It could be you.</p>
+                <a href="#entry" class="btn-primary" style="margin-top:24px;"><i class="fas fa-arrow-right"></i> ENTER NOW <i class="fas fa-gift"></i></a>
+            </div>
+            <div style="flex:1;"></div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. HOW IT WORKS -->
+<section style="padding:60px 0;">
+    <div class="container">
+        <h2><i class="fas fa-circle-info" style="color:#DA291C;"></i> How It Works</h2>
+        <div class="steps-grid">
+            <div class="step-card"><div class="step-icon">1️⃣</div><h3>Click Enter Now</h3><p>Complete the short entry form.</p></div>
+            <div class="step-card"><div class="step-icon">2️⃣</div><h3>Confirm Details</h3><p>Make sure your contact information is correct.</p></div>
+            <div class="step-card"><div class="step-icon">3️⃣</div><h3>Winner Selection</h3><p>A random winner will be selected and contacted.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. WHAT YOU CAN WIN -->
+<section style="background:#feedcf; padding:60px 0;">
+    <div class="container">
+        <h2><i class="fas fa-utensils" style="color:#DA291C;"></i> What Can You Enjoy?</h2>
+        <div class="prize-panel">
+            <ul class="prize-list">
+                <li><i class="fas fa-burger"></i> 🍔 Burgers & Signature Meals</li>
+                <li><i class="fas fa-french-fries"></i> 🍟 Large Fries & Combos</li>
+                <li><i class="fas fa-mug-hot"></i> 🥤 Drinks, Shakes & McFlurry</li>
+                <li><i class="fas fa-drumstick-bite"></i> 🍗 Nuggets & Special Menu Items</li>
+            </ul>
+            <div class="total-value"><i class="fas fa-tag"></i> Total Value: $300</div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. ENTRY FORM (scroll target) -->
+<section id="entry" style="padding:60px 0;">
+    <div class="container">
+        <h2><i class="fas fa-pen-to-square"></i> Enter for Your Chance to Win</h2>
+        <div class="form-card">
+            <form onsubmit="event.preventDefault(); alert('✅ Thank you! (demo)');">
+                <div class="input-field"><label>First Name</label><input type="text" placeholder="John" required></div>
+                <div class="input-field"><label>Last Name</label><input type="text" placeholder="Doe" required></div>
+                <div class="input-field"><label>Email Address</label><input type="email" placeholder="hello@example.com" required></div>
+                <div class="input-field"><label>Phone Number</label><input type="tel" placeholder="(555) 123-4567" required></div>
+                <div class="input-field"><label>Country</label>
+                    <select required><option>-- select --</option><option>USA</option><option>Canada</option><option>UK</option><option>Australia</option></select>
+                </div>
+                <div class="checkbox"><input type="checkbox" id="terms" required><label for="terms">I agree to the terms & conditions</label></div>
+                <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> SUBMIT ENTRY</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- 5. URGENCY + COUNTDOWN -->
+<section style="background:#232323; color:white; padding:60px 0;">
+    <div class="container">
+        <div class="countdown-block">
+            <div style="max-width:400px;">
+                <h2 style="color:#FFC72C;">⏳ Limited-Time Entry</h2>
+                <p style="font-size:1.3rem;">Entries close soon. Don’t miss your $300 voucher.</p>
+            </div>
+            <div class="timer-digits" id="countdown">
+                <div><span class="digit-block" id="days">02</span><span class="timer-unit">days</span></div>
+                <span>:</span>
+                <div><span class="digit-block" id="hours">14</span><span class="timer-unit">hrs</span></div>
+                <span>:</span>
+                <div><span class="digit-block" id="minutes">33</span><span class="timer-unit">mins</span></div>
+                <span>:</span>
+                <div><span class="digit-block" id="seconds">45</span><span class="timer-unit">secs</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. TRUST / LEGIT -->
+<section style="padding:30px 0;">
+    <div class="container">
+        <div class="trust-row">
+            <span><i class="fas fa-check-circle" style="color:#2e7d32;"></i> No purchase necessary</span>
+            <span><i class="fas fa-shuffle"></i> Winner selected at random</span>
+            <span><i class="fas fa-file-signature"></i> Terms apply</span>
+            <span><i class="fas fa-cake-candles"></i> Must be 18+</span>
+        </div>
+    </div>
+</section>
+
+<!-- 7. FOOTER with McDonald's logo, 5 social icons, and exact disclaimer text -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- McDonald's logo big (demo) -->
+            <div class="footer-logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 90'%3E%3Crect width='240' height='90' fill='%23FFC72C' rx='20'/%3E%3Ctext x='30' y='62' font-family='Arial Black' font-size='48' fill='%23DA291C'%3EMcDonald's%3C/text%3E%3C/svg%3E"
+                     alt="McDonald's logo demo">
+            </div>
+
+            <!-- footer links: privacy, terms, email -->
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="mailto:demo@mcd.com">contact@mcd.com</a>
+            </div>
+
+            <!-- EXACTLY FIVE MOST POPULAR SOCIAL ICONS (Facebook, Instagram, X, YouTube, TikTok) -->
+            <div class="social-icons">
+                <a href="#" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="x-twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="youtube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="tiktok"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <!-- EXACT DISCLAIMER TEXT AS REQUESTED -->
+        <div class="disclaimer">
+            not an official mcdonalds site — all trademarks belong to mcdonalds — all popular social icons for demonstration
+        </div>
+    </div>
+</footer>
+
+<!-- lightweight countdown script -->
+<script>
+    (function() {
+        let total = (2*86400) + (14*3600) + (33*60) + 45; // 2d 14h 33m 45s
+        const d = document.getElementById('days');
+        const h = document.getElementById('hours');
+        const m = document.getElementById('minutes');
+        const s = document.getElementById('seconds');
+        function pad(n){ return n<10 ? '0'+n : n; }
+        function update(){
+            if(total<=0){ d.innerText='00'; h.innerText='00'; m.innerText='00'; s.innerText='00'; return; }
+            const days = Math.floor(total/86400);
+            const hours = Math.floor((total%86400)/3600);
+            const mins = Math.floor((total%3600)/60);
+            const secs = total%60;
+            d.innerText = pad(days); h.innerText = pad(hours); m.innerText = pad(mins); s.innerText = pad(secs);
+            total--;
+        }
+        update();
+        setInterval(update, 1000);
+    })();
+</script>
+</body>
+</html>
